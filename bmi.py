@@ -23,7 +23,16 @@ wzrost = float(input("Podaj wzrost (w centymetrach): "))
 wzrost = wzrost /100
 waga = int(input("Podaj wagę (w kg): "))
 
-bmi = waga / (wzrost * wzrost)
+bmi = round(waga / (wzrost * wzrost),2)
 
-print ("Twoje BMI to: ", round(bmi,2))
+dane = {
+  "imie": imie,
+  "wzrost": wzrost,
+  "bmi": bmi}
+plik = imie+".json"
+print (imie.capitalize(), "Twoje BMI to: ", bmi)
 
+with open(plik, "w") as outfile:
+    json.dump(dane, outfile)
+
+print("Plik zapisany jako: ", plik)
